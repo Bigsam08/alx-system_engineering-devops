@@ -1,2 +1,0 @@
-#!/vbin/bash
-sort | uniq -u
