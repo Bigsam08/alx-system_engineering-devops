@@ -2,8 +2,8 @@
 #A bash script that prints Best School 10 times Using while loop
 
 msg="Best School"
-count=10
-while [ $count -le 20 ]
+count=0
+while [ $count -le 9 ]
 do
     echo "$msg"
     count=$((count + 1))
