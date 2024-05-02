@@ -6,9 +6,7 @@ msg="Best School"
 
 while [ $num -le 9 ];
 do
-    if [ $num -eq 8 ];
-    then
-        echo "$msg"
+    if [ $num -eq 8 ]; then
         echo "Hi"
     else
         echo "$msg"
