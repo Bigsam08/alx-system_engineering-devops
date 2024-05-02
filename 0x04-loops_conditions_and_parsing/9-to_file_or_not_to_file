@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # checks gor file and print msgs
 
-file="school"
 
 # checks if file exists
 if [ -e "$file" ]; then
@@ -11,25 +10,16 @@ if [ -e "$file" ]; then
   # checks if file is empty
   if [ ! -s "$file" ]; then
     echo "school file is empty"
-
-    # checks if file is a regular file
-    if [ -f "$file" ]; then
-      echo "school is a regular file"
-    fi  
-
-  else
-
+else
     echo "school file is not empty"
-
-    # checks if file is a regular file
-    if [ -f "$file" ]; then
-      echo "school is a regular file"
-    fi  
-  
   fi
 
+    # checks if file is a regular file
+    if [ -f "$file" ]; then
+      echo "school is a regular file"
+  else
+      echo "school is not a regular file"
+    fi  
 else
-  
-  echo "school file does not exist"
-
+    echo "school file does not exist"
 fi
