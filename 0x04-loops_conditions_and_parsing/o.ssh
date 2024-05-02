@@ -1,0 +1,9 @@
+#!/bin/bash
+
+msg="fuck you"
+count=1
+while [ $count -le 6 ];
+do
+   echo "$msg" 
+   count=$((count +1))
+done

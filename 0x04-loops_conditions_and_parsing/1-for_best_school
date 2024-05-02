@@ -4,6 +4,6 @@
 # Using for loop
 
 name="Best School"
-for (( i=10; i<20; i++))                                        do
+for (( i=10; i<20; i++ ))                                        do
     echo "$name"
 done

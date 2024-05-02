@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+#A bash script that prints Best School 10 times
+# Using while loop
+
+msg="Best School"
+count=21
+
+while [ $count -le 31 ]
+do
+    echo "$msg"
+    count=$((count + 1))
+done
