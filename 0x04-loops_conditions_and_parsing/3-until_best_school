@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# a bash script using until loop to print a msg 10 times
+msg="Best School"
+count=0
+
+until [ $count -gt 9 ]
+do
+    echo "$msg"
+    count=$(( count + 1 ))
+done
