@@ -3,7 +3,7 @@
 #A bash script that prints Best School 10 times
 # Using for loop
 
-name="Best School"
+#name="Best School"
 for (( i=10; i<20; i++ ))                                        do
-    echo "$name"
+    echo "Best School"
 done
