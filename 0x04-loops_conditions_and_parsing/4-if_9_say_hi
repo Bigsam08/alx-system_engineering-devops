@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# A bash script that prints hi after 9
+num=0
+msg="Best School"
+
+while [ $num -le 9 ];
+do
+    if [ $num -eq 8 ];
+    then
+        echo "$msg"
+        echo "Hi"
+    else
+        echo "$msg"
+    fi
+    num=$((num + 1))
+done
