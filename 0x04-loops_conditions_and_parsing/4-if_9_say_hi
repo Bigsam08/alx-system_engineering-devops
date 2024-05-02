@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
 # A bash script that prints hi after 9
-num=0
+count=1
 msg="Best School"
 
-while [ $num -le 10 ];
+while [ $count -lt 11 ]
 do
-    if [ $num -eq 9 ]; then
-        echo "Hi"
-    else
-        echo "$msg"
-    fi
-    num=$((num + 1))
+	if [ $count -eq 10 ]
+	then
+		echo "Hi"
+	fi
+
+	echo "$msg"
+    count=$((count + 1))
 done
