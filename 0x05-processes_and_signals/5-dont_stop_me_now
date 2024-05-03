@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Script diplaying an endless msg not being able to stop it using Ctrl + C
+# Loop ends with the kill command
+
+process=$(pgrep -f "4-to_infinity_and_beyond")
+kill "$process"
