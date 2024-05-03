@@ -1,4 +1,5 @@
 #!/busr/bin/env bash
 # Script to display bash words
-# shellcheck disable=SC2059
-ps -aux | grep bash
+# shellcheck disable=SC2009
+
+ps -auxf | grep bash
