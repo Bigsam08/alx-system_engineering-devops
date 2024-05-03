@@ -25,5 +25,5 @@ then
     echo "manage_my_process restarted"
     #if its neitheer START STOP OR RESTART print err  usage msg
 else
-    echo 'Usage: manage_my_process {start|stop|restarted}'
+    echo 'Usage: manage_my_process {start|stop|restart}'
 fi
