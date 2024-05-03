@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# write "i am alive in a loop every 2 seconds to a tempoary file
+
+msg="I am alive!"
+while true
+do
+    echo "$msg" >> /tmp/my_process
+    sleep 2
+done
