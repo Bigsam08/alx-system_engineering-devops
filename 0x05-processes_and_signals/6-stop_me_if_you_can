@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# stops and infint loop without using kill or killall command
+
+pkill -f 4-to_infinity_and_beyond
