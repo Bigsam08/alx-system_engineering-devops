@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Bash script that prints endlessly using a loop and  terminated by ctrl + C
+# adding sleep in between loop
+
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
