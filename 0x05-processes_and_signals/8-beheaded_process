@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
 # Script that terminates 7-highlander
-process=$(pgrep -f "7-highlander")
-kill "$process"
+pkill -f -SIGKILL 7-highlander
