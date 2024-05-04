@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-
-# Script that terminates 7-highlander
+# bash script to termimate 7-highlander after receiving sigal
 pkill -f -SIGKILL 7-highlander
