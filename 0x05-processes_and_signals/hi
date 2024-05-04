@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# SCript that manages process
+
+# Start a process, create a file and print out msg
+if [ "${1}" == "start" ]
+then
+    ./manage_my_process &
+    touch /var/run/my_process.pid
+    echo "$$" > /var/run/my_process.pid
+    echo "manage_my_process started"
+# if STOP stop the process using kill command and delete file
+elif [ "${1}" == "stop" ]
+then
+    echo 'manage_my_process stopped'
+#    kill "$(cat /var/run/my_process.pid)"
+    pkill -f /var/run/my_process.pid
+    rm /var/run/my_process.pid
+    #if RESTART, kill process and restart
+elif [ "${1}" == "restart" ]
+then
+    pkill -f /var/run/my_process.pid
+    rm /var/run/my_process.pid
+    ./manage_my_process &
+    touch /var/run/my_process.pid
+    echo "$$" > /var/run/my_process.pid
+    echo "manage_my_process restarted"
+    #if its neitheer START STOP OR RESTART print err  usage msg
+else
+    echo 'Usage: manage_my_process {start|stop|restart}'
+fi
