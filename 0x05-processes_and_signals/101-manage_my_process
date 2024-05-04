@@ -1,23 +1,27 @@
 #!/usr/bin/env bash
-#Bash (init) script 101-manage_my_process that manages manage_my_process
+# SCript that manages process
+# Start a process, create a file and print out msg
 if [ "${1}" == "start" ]
 then
     ./manage_my_process &
-   # touch /var/run/my_process.pid
-    echo "$$" > /var/run/my_process.pid
+    touch /var/run/my_process.pid
+    echo "$!" > /var/run/my_process.pid
     echo "manage_my_process started"
+    #STOP process and print msg
 elif [ "${1}" == "stop" ]
 then
     echo "manage_my_process stopped"
     kill "$(cat /var/run/my_process.pid)"
     rm /var/run/my_process.pid
+    #restart to process
+    #prints msg and generates new id
 elif [ "${1}" == "restart" ]
 then
     kill "$(cat /var/run/my_process.pid)"
     rm /var/run/my_process.pid
     ./manage_my_process &
-    #touch /var/run/my_process.pid
-    echo "$$" > /var/run/my_process.pid
+    touch /var/run/my_process.pid
+    echo "$!" > /var/run/my_process.pid
     echo "manage_my_process restarted"
 else
     echo "Usage: manage_my_process {start|stop|restart}"
