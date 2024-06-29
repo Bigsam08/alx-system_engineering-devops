@@ -1,0 +1,6 @@
+# client config file, with no password
+Host 34.203.38.108
+     User ubuntu
+     IdentityFile ~/.ssh/school
+     PasswordAuthentication no
+     PubKeyAuthentication yes
