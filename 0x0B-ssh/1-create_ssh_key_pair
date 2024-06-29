@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# creating an ssh pairkey in larger bits 4096
+ssh-keygen -t rsa -b 4096 -f school -P betty
