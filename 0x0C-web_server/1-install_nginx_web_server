@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# install nginx web server on my personal server
+# listening at port 80, get a request page with crul printing back a str
+
+apt update && apt install -y nginx
+sudo ufw allow 'Nginx HTTP'
+sudo echo 'Hello World!' > /var/www/html/index.html
+sudo service nginx start
