@@ -1,34 +1,27 @@
-exec { 'apt-get-update':
-  command => '/usr/bin/apt-get update',
+# Update package
+exec { 'apt-update':
+  command => '/usr/bin/apt-get -y update',
+  path    => ['/usr/bin', '/bin']
 }
 
+# Install Nginx package
 package { 'nginx':
-  ensure  => installed,
-  require => Exec['apt-get-update'],
+  ensure => installed
 }
 
-file_line { 'a':
-  ensure  => 'present',
-  path    => '/etc/nginx/sites-available/default',
-  after   => 'listen 80 default_server;',
-  line    => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
-  require => Package['nginx'],
-}
-
-file_line { 'b':
-  ensure  => 'present',
-  path    => '/etc/nginx/sites-available/default',
-  after   => 'listen 80 default_server;',
-  line    => 'add_header X-Served-By $hostname;',
-  require => Package['nginx'],
-}
-
+# HTML file
 file { '/var/www/html/index.html':
   content => 'Hello World!',
-  require => Package['nginx'],
+}
+
+# add the custom HTTP header in nginx config
+file_line { 'add custom header':
+  ensure => present,
+  path   => '/etc/nginx/sites-available/default',
+  line   => "\tadd_header X-Served-By ${hostname};",
+  after  => 'server_name _;',
 }
 
 service { 'nginx':
-  ensure  => running,
-  require => Package['nginx'],
+  ensure => running,
 }

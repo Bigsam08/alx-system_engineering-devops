@@ -26,5 +26,5 @@ backend webservers\n
     \tserver 257302-web-02 52.205.94.188:80 check\n
     "
 # sudo cp -a /etc/haproxyy/haproxy.cfg{,.custom}
-sudo echo -e $balancer >> /etc/haproxy/haproxy.cfg
+echo -e "$balancer" >> /etc/haproxy/haproxy.cfg
 service haproxy start
