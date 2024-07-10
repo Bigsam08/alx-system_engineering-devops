@@ -14,6 +14,18 @@ sudo add-apt-repository -y ppa:vbernat/haproxy-2.4
 sudo apt-get update
 sudo apt-get install -y haproxy=2.4.\*
 
-# HAProxy configuration
+# HAProxy configuration and append to the haproxy.cfg file
+balancer='\
+    frontend haproxy_balancer
+        bind*:80
+        mode http
+        default_backend webservers
+   
+    backend webservers
+        balance roundrobin
+        server 257302-web-01 34.203.38.108:80 check
+        257302-web-02 52.205.94.188:80 check
+'
+sudo cp -a /etc/haproxyy/haproxy.cfg{,.custom}
+sudo echo $balancer >> /etc/haproxy/haproxy.cfg
 service haproxy start
-
