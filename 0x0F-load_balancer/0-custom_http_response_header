@@ -1,28 +1,11 @@
 #!/usr/bin/env bash
-# installing a new nginx in my web server  -02
+# installing a new nginx in my server
 
 # update packages qnd install an nginx software on the server
-sudo apt-get update
-sudo apt-get install nginx -y
-sudo ufw allow 'Nginx HTTP'
-
-# overwrites the default page for nginx html
-echo 'HI PEOPLE' > /var/www/html/index.html
-# creates a 404 error page information
-echo "Ceci n'est pas une page" > /var/www/html/404.html
-
-# add the Http header response into ngimx file location
-
-echo "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    add_header X-Served-By $HOSTNAME;
-    root    /var/www/html;
-    index index.html index.htm;
-
-    location /redirect_me {
-        return 301
-    }
-}" >> /etc/nginx/sites-available/default
+#sudo apt-get update
+#sudo apt-get install nginx -y
+#sudo ufw allow 'Nginx HTTP'
+cp /etc/nginx/nginx.conf etc/nginx/nginx.conf_backup
+sudo sed -i "/http {/a\         add_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
 
 sudo service nginx restart
