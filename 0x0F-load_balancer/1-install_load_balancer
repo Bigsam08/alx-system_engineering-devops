@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# install and configure HAProxy on my server
+# HAProxy (High Availability Proxy) is an open source load balancer proxy server that helps control
+# incoming and outgoing traffic distrubuting it to different servers
+# using an algrithim called roundrobin
+
+# get all packages to lateest version
+sudo apt-get -y update
+sudo apt-get -y install software-properties-common
+
+
+# add the HAProxy repo and install version 2.4
+sudo add-apt-repository -y ppa:vbernat/haproxy-2.4
+sudo apt-get update
+sudo apt-get install -y haproxy=2.4.\*
+
+# HAProxy configuration
+service haproxy start
+
