@@ -24,8 +24,8 @@ frontend haproxy_balancer\n
 backend webservers
     balance roundrobin
     server 257302-web-01 34.203.38.108:80 check
-    257302-web-02 52.205.94.188:80 check
+    server 257302-web-02 52.205.94.188:80 check
 "
-sudo cp -a /etc/haproxyy/haproxy.cfg{,.custom}
+# sudo cp -a /etc/haproxyy/haproxy.cfg{,.custom}
 sudo echo $balancer >> /etc/haproxy/haproxy.cfg
 service haproxy start
