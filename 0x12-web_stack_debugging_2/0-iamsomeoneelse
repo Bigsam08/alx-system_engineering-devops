@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# a script that takes an argument to check who the user is
+# using the whomai command
+username=$1
+sudo -u "$username" whoami
