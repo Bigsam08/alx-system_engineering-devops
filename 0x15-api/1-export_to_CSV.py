@@ -18,13 +18,11 @@ if __name__ == '__main__':
     todo_data = todo.json()
 
     with open("{}.csv".format(emp_id), "w", newline='') as csvfile:
-        writer = csv.writer(csvfile)
-#        writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS",
-#"TASK_TITLE"])
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         for task in todo_data:
-            writer.writerow({
+            writer.writerow([
                  emp_id,
                  data['name'],
                  task['completed'],
                  task['title']
-                })
+                 ])
