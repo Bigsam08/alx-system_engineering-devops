@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     with open("{}.csv".format(emp_id), "w", newline='') as csvfile:
         col = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
-        writer = csv.dict(csvfile, col=col)
+        writer = csv.DictWriter(csvfile, fieldnames=col)
 
         writer.writeheader()
         for task in todo_data:
