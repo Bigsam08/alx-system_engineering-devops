@@ -24,7 +24,7 @@ if __name__ == '__main__':
             completed_task.append(task)
     total_tasks = len(todo_data)
 
-    print("Employee {}is done with tasks({}/{}):".format(
+    print("Employee {} is done with tasks({}/{}):".format(
         employee_name, len(completed_task), total_tasks))
     for task in completed_task:
         print(f"\t {task['title']}")
