@@ -7,13 +7,17 @@ import requests
 
 
 def top_ten(subreddit):
-    """top 10"""
-    response = requests.get("https://www.reddit.com/r/{}/hot.json?limit=10"
-                            .format(subreddit),
-                            headers={"User-Agent": "My-User-Agent"},
+    url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
+    headers = {
+        "User-Agent": "User-Agent)"
+    }
+    params = {
+        "limit": 10
+    }
+    response = requests.get(url, headers=headers, params=params,
                             allow_redirects=False)
-    if sub_info.status_code == 400:
-        print('None')
-    else:
-        [print(child.get("data").get("title"))
-         for child in sub_info.json().get("data").get("children")]
+    if response.status_code == 404:
+        print("None")
+        return
+    sub_list = response.json().get("data")
+    [print(i.get("data").get("title")) for i in sub_list.get("children")]
