@@ -1,17 +1,16 @@
 #!/usr/bin/python3
-"""
-    A recursive function that queries the Reddit
-    API and returns titles of
-    all hot articles.
-"""
+"""A recursive function that queries the Reddit
+API and returns a list containing the titles of
+all hot articles for a given subreddit."""
 import requests
 
 
 def recurse(subreddit, hot_list=[], after="", count=0):
-    """ code """
+    """returns a list containing the titles
+    of all hot articles for a given subreddit"""
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     headers = {
-        "User-Agent": "User-Agent"
+        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
     }
     params = {
         "after": after,
@@ -23,11 +22,11 @@ def recurse(subreddit, hot_list=[], after="", count=0):
     if response.status_code == 404:
         return None
 
-    alist = response.json().get("data")
-    after = alist.get("after")
-    count += alist.get("dist")
-    for i in alist.get("children"):
-        hot_list.append(i.get("data").get("title"))
+    results = response.json().get("data")
+    after = results.get("after")
+    count += results.get("dist")
+    for c in results.get("children"):
+        hot_list.append(c.get("data").get("title"))
 
     if after is not None:
         return recurse(subreddit, hot_list, after, count)
