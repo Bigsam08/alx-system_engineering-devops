@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+""" QUERY TOP 10 """
+
+
 import requests
+import sys
 
 
 def top_ten(subreddit):
@@ -9,7 +13,7 @@ def top_ten(subreddit):
     """
 
     headers = {'User-Agent': 'MyRedditagent/0.1'}
-    url = f'https://www.reddit.com/r/{subreddit}/hot.json'
+    url = f'https://www.reddit.com/r/{subreddit}/hot.json?limit=10'
 
     try:
         response = requests.get(url, headers=headers)
@@ -24,3 +28,7 @@ def top_ten(subreddit):
             print("None")
         except KeyError:
             print("None")
+
+
+if __name__ == '__main__':
+    top_ten(sys.argv[1])
