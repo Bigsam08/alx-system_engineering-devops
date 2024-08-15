@@ -8,12 +8,19 @@ def top_ten(subreddit):
     listed for a given subreddit.
     """
 
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
-    headers = {"User-Agent": "My-User-Agent"}
-    response = requests.get(url, headers=headers, allow_redirects=False)
+    headers = {'User-Agent': 'MyRedditagent/0.1'}
+    url = f'https://www.reddit.com/r/{subreddit}/hot.json'
 
-    if response.status_code == 400:
-        print("None")
-    else:
-        for child in response.json()["data"]["children"]:
-            print(child["data"]["title"])
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+        data = response.json()
+        display = data['data']['children']
+
+        for i in range(min(10, len(display))):
+            print(displY[i]['data']['title'])
+
+        except requests.exceptions.HTTPError:
+            print("None")
+        except KeyError:
+            print("None")
